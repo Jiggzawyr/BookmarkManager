@@ -1,0 +1,32 @@
+use('bookmark_manager');
+
+db.bookmarks.drop();
+
+db.createCollection("bookmarks", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [ "name", "category", "url" ],
+      properties: {
+        name: {
+          bsonType: "string",
+          description: "Name of bookmark - Required."
+        },
+        category: {
+          bsonType: "string",
+          description: "Category of bookmark - Required."
+        },
+        url: {
+          bsonType: "string",
+          description: "Url of bookmark - Required."
+        }
+      }
+    }
+  }
+})
+
+db.bookmarks.insertMany([
+  {'name': 'Youtube', 'category': "Social Media", 'url': "https://www.youtube.com/"},
+  {'name': 'Twitch', 'category': "Social Media", 'url': "https://www.twitch.tv/"},
+]);
+

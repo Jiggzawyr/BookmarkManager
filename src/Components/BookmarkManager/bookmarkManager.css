@@ -1,0 +1,44 @@
+h1 {
+    text-align:center
+}
+
+.input-form {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    flex-direction: row;
+}
+
+@media (max-width: 800px) {
+    .input-form {
+        flex-direction: column;
+    }
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.icon-wrapper:hover {
+    transform: scale(1.2);
+}
+
+
+.filter-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.bookmark-table {
+    margin: 20px auto;
+}
+
+.table-wrapper {
+    width: 60%;
+    margin: auto;
+}
