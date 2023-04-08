@@ -2,11 +2,14 @@ import { useState } from 'react';
 import './login.css';
 import { TextField, Button } from '@mui/material';
 import { authenticate } from "../../Services/AuthenticationService";
+import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login({handleLogin}) {
 
     const [username, setUsername] = useState([]);
     const [password, setPassword] = useState([]);
+
+    const navigate = useNavigate();
 
     const handleLoginInClick = (e) => {
         e.preventDefault();
@@ -16,7 +19,10 @@ export default function Login() {
                 success = false;
             })
             .then( () => {
-                if(success) window.location.href="/bookmark-manager";           
+                if(success){
+                    handleLogin();      
+                    navigate('/bookmark-manager', { replace: true });
+                }
             })
       }
 

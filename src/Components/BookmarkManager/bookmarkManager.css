@@ -42,3 +42,9 @@ h1 {
     width: 60%;
     margin: auto;
 }
+
+@media (max-width: 800px) {
+    .table-wrapper {
+        width: 100%;
+    }
+}

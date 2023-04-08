@@ -12,9 +12,9 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { MenuItem } from '@mui/material';
-import { authenticate } from "../../Services/AuthenticationService";
 
-export default function BookmarkManager() {
+
+export default function BookmarkManager({user}) {
 
     const [bookmarks, setBookmarks] = useState([]);
     const [newBookmark, setNewBookmark] = useState({
@@ -50,10 +50,8 @@ export default function BookmarkManager() {
     }
 
     useEffect( () => {
-        authenticate().then( () => {
-            fetchBookmarks(); 
-            fetchCategories();    
-        })
+        fetchBookmarks(); 
+        fetchCategories();    
     }, [])
 
     const validateData = useCallback( () => {
@@ -69,7 +67,6 @@ export default function BookmarkManager() {
     }, [newBookmark, validateData])
 
     useEffect( () => {
-        console.log("Current category: " + category);
         let categoryFilter = category  === "--" ? null : category
         fetchBookmarks(categoryFilter);
     }, [category])
@@ -105,7 +102,6 @@ export default function BookmarkManager() {
         validateData();
         if(newBookmark.name.length === 0 || newBookmark.category.length === 0 || newBookmark.url.length === 0) return;
 
-        //setBookmarks( prevBookmarks => ([...prevBookmarks, newBookmark]))
         const bookmark = {...newBookmark}
         setNewBookmark({
             "name": "",
