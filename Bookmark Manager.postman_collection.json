@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "d53acb0c-dae6-451a-8f7a-718b6a4047a3",
+		"name": "Bookmark Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12157551"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "App location",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "L8h11r1Byp9KS2XjVeuGkbyJcuC5d7e8a10bXg4Y1G1zDM0Bud1Wuna7B1WALCPe",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"collection\": \"bookmarks\",\r\n    \"database\": \"bookmark_manager\",\r\n    \"dataSource\": \"Cluster0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://realm.mongodb.com/api/client/v2.0/app/data-nulxs/location",
+							"protocol": "https",
+							"host": [
+								"realm",
+								"mongodb",
+								"com"
+							],
+							"path": [
+								"api",
+								"client",
+								"v2.0",
+								"app",
+								"data-nulxs",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication - API Key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let json = pm.response.json();\r",
+									"pm.collectionVariables.set(\"access_token\", json.access_token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", json.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\": \"L8h11r1Byp9KS2XjVeuGkbyJcuC5d7e8a10bXg4Y1G1zDM0Bud1Wuna7B1WALCPe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://realm.mongodb.com/api/client/v2.0/app/data-nulxs/auth/providers/api-key/login",
+							"protocol": "https",
+							"host": [
+								"realm",
+								"mongodb",
+								"com"
+							],
+							"path": [
+								"api",
+								"client",
+								"v2.0",
+								"app",
+								"data-nulxs",
+								"auth",
+								"providers",
+								"api-key",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"key\": \"L8h11r1Byp9KS2XjVeuGkbyJcuC5d7e8a10bXg4Y1G1zDM0Bud1Wuna7B1WALCPe\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://realm.mongodb.com/api/client/v2.0/app/data-nulxs/auth/providers/api-key/login",
+									"protocol": "https",
+									"host": [
+										"realm",
+										"mongodb",
+										"com"
+									],
+									"path": [
+										"api",
+										"client",
+										"v2.0",
+										"app",
+										"data-nulxs",
+										"auth",
+										"providers",
+										"api-key",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "content-encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "set-cookie",
+									"value": "authreq=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; HttpOnly; Secure; SameSite=None"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubdomains;"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-appservices-request-id",
+									"value": "63fe127adca99d4375139dfc"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "date",
+									"value": "Tue, 28 Feb 2023 14:40:58 GMT"
+								},
+								{
+									"key": "content-length",
+									"value": "777"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "732"
+								},
+								{
+									"key": "server",
+									"value": "mdbws"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYWFzX2RldmljZV9pZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImJhYXNfZG9tYWluX2lkIjoiNjNlNzY0YTcxNjEwYzM5OWQ1OTRmZTllIiwiZXhwIjoxNjc3NTk3MDU4LCJpYXQiOjE2Nzc1OTUyNTgsImlzcyI6IjYzZmUxMjdhZGNhOTlkNDM3NTEzOWUxMiIsInN0aXRjaF9kZXZJZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsInN0aXRjaF9kb21haW5JZCI6IjYzZTc2NGE3MTYxMGMzOTlkNTk0ZmU5ZSIsInN1YiI6IjYzZmNjNWQ2YmI0NWVkNjgzY2I4ZTEyOCIsInR5cCI6ImFjY2VzcyJ9.IRoNuzRZOKXUv9BQCE9rJBUH_hPpx0K9mTG7n80oYrw\",\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYWFzX2RhdGEiOm51bGwsImJhYXNfZGV2aWNlX2lkIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwiYmFhc19kb21haW5faWQiOiI2M2U3NjRhNzE2MTBjMzk5ZDU5NGZlOWUiLCJiYWFzX2lkIjoiNjNmZTEyN2FkY2E5OWQ0Mzc1MTM5ZTEyIiwiYmFhc19pZGVudGl0eSI6eyJpZCI6IjYzZmNjNWQ3YmI0NWVkNjgzY2I4ZTEzZiIsInByb3ZpZGVyX3R5cGUiOiJhcGkta2V5IiwicHJvdmlkZXJfaWQiOiI2M2U3NjRiNTM0OTY2MDlmNTU2N2ZiNWMifSwiZXhwIjoxNjgyNzc5MjU4LCJpYXQiOjE2Nzc1OTUyNTgsInN0aXRjaF9kYXRhIjpudWxsLCJzdGl0Y2hfZGV2SWQiOiIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCJzdGl0Y2hfZG9tYWluSWQiOiI2M2U3NjRhNzE2MTBjMzk5ZDU5NGZlOWUiLCJzdGl0Y2hfaWQiOiI2M2ZlMTI3YWRjYTk5ZDQzNzUxMzllMTIiLCJzdGl0Y2hfaWRlbnQiOnsiaWQiOiI2M2ZjYzVkN2JiNDVlZDY4M2NiOGUxM2YiLCJwcm92aWRlcl90eXBlIjoiYXBpLWtleSIsInByb3ZpZGVyX2lkIjoiNjNlNzY0YjUzNDk2NjA5ZjU1NjdmYjVjIn0sInN1YiI6IjYzZmNjNWQ2YmI0NWVkNjgzY2I4ZTEyOCIsInR5cCI6InJlZnJlc2gifQ.R80L-bJHIizwAuM8t7qFnnNklhWWTSP7q86N8ASr1NA\",\n    \"user_id\": \"63fcc5d6bb45ed683cb8e128\",\n    \"device_id\": \"000000000000000000000000\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Authentication - Email/Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let json = pm.response.json();\r",
+									"pm.collectionVariables.set(\"access_token\", json.access_token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", json.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"martinstojanovic96@gmail.com\",\r\n    \"password\": \"123Martin.123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://realm.mongodb.com/api/client/v2.0/app/data-nulxs/auth/providers/local-userpass/login",
+							"protocol": "https",
+							"host": [
+								"realm",
+								"mongodb",
+								"com"
+							],
+							"path": [
+								"api",
+								"client",
+								"v2.0",
+								"app",
+								"data-nulxs",
+								"auth",
+								"providers",
+								"local-userpass",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"martinstojanovic96@gmail.com\",\r\n    \"password\": \"123Martin.123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://realm.mongodb.com/api/client/v2.0/app/data-nulxs/auth/providers/local-userpass/login",
+									"protocol": "https",
+									"host": [
+										"realm",
+										"mongodb",
+										"com"
+									],
+									"path": [
+										"api",
+										"client",
+										"v2.0",
+										"app",
+										"data-nulxs",
+										"auth",
+										"providers",
+										"local-userpass",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store, must-revalidate"
+								},
+								{
+									"key": "content-encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "set-cookie",
+									"value": "authreq=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; HttpOnly; Secure; SameSite=None"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubdomains;"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "x-appservices-request-id",
+									"value": "6411eb7b906c968e0a1b8bf8"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 15 Mar 2023 15:59:55 GMT"
+								},
+								{
+									"key": "content-length",
+									"value": "791"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "605"
+								},
+								{
+									"key": "server",
+									"value": "mdbws"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYWFzX2RldmljZV9pZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImJhYXNfZG9tYWluX2lkIjoiNjNlNzY0YTcxNjEwYzM5OWQ1OTRmZTllIiwiZXhwIjoxNjc4ODk3Nzk1LCJpYXQiOjE2Nzg4OTU5OTUsImlzcyI6IjY0MTFlYjdiOTA2Yzk2OGUwYTFiOGMzNSIsInN0aXRjaF9kZXZJZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsInN0aXRjaF9kb21haW5JZCI6IjYzZTc2NGE3MTYxMGMzOTlkNTk0ZmU5ZSIsInN1YiI6IjY0MTFlOWVlYzE2ZmM1ZDJkZGU0MTc5OSIsInR5cCI6ImFjY2VzcyJ9.fxcNWEQzu2ccAIw7P51ADCWvvhgXJOR-MeHfDAbvKTI\",\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYWFzX2RhdGEiOm51bGwsImJhYXNfZGV2aWNlX2lkIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwiYmFhc19kb21haW5faWQiOiI2M2U3NjRhNzE2MTBjMzk5ZDU5NGZlOWUiLCJiYWFzX2lkIjoiNjQxMWViN2I5MDZjOTY4ZTBhMWI4YzM1IiwiYmFhc19pZGVudGl0eSI6eyJpZCI6IjY0MTFlOWVlYzE2ZmM1ZDJkZGU0MTc4MyIsInByb3ZpZGVyX3R5cGUiOiJsb2NhbC11c2VycGFzcyIsInByb3ZpZGVyX2lkIjoiNjQxMWU5Y2I0MDE4NGQ2ZDY4ZGE0MDM2In0sImV4cCI6MTY4NDA3OTk5NSwiaWF0IjoxNjc4ODk1OTk1LCJzdGl0Y2hfZGF0YSI6bnVsbCwic3RpdGNoX2RldklkIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwic3RpdGNoX2RvbWFpbklkIjoiNjNlNzY0YTcxNjEwYzM5OWQ1OTRmZTllIiwic3RpdGNoX2lkIjoiNjQxMWViN2I5MDZjOTY4ZTBhMWI4YzM1Iiwic3RpdGNoX2lkZW50Ijp7ImlkIjoiNjQxMWU5ZWVjMTZmYzVkMmRkZTQxNzgzIiwicHJvdmlkZXJfdHlwZSI6ImxvY2FsLXVzZXJwYXNzIiwicHJvdmlkZXJfaWQiOiI2NDExZTljYjQwMTg0ZDZkNjhkYTQwMzYifSwic3ViIjoiNjQxMWU5ZWVjMTZmYzVkMmRkZTQxNzk5IiwidHlwIjoicmVmcmVzaCJ9.0rMmGxYXdwLNSOrdYBpZ5wrKKtxQ1yY9yhaHCNQ2D4U\",\n    \"user_id\": \"6411e9eec16fc5d2dde41799\",\n    \"device_id\": \"000000000000000000000000\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bookmarks",
+			"item": [
+				{
+					"name": "Get Bookmarks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"collection\": \"bookmarks\",\r\n    \"database\": \"bookmark_manager\",\r\n    \"dataSource\": \"Cluster0\",\r\n    \"filter\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://data.mongodb-api.com/app/data-nulxs/endpoint/data/v1/action/find",
+							"protocol": "https",
+							"host": [
+								"data",
+								"mongodb-api",
+								"com"
+							],
+							"path": [
+								"app",
+								"data-nulxs",
+								"endpoint",
+								"data",
+								"v1",
+								"action",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"collection\": \"bookmarks\",\r\n    \"database\": \"bookmark_manager\",\r\n    \"dataSource\": \"Cluster0\",\r\n    \"pipeline\": [\r\n        { \"$group\": { \"_id\" : \"$category\" }},\r\n        { \"$sort\": { \"_id\": 1 } }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://data.mongodb-api.com/app/data-nulxs/endpoint/data/v1/action/aggregate",
+							"protocol": "https",
+							"host": [
+								"data",
+								"mongodb-api",
+								"com"
+							],
+							"path": [
+								"app",
+								"data-nulxs",
+								"endpoint",
+								"data",
+								"v1",
+								"action",
+								"aggregate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bookmark",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"collection\": \"bookmarks\",\r\n    \"database\": \"bookmark_manager\",\r\n    \"dataSource\": \"Cluster0\",\r\n    \"filter\": {\r\n       \"_id\": {\r\n           \"$oid\": \"63e7e568ccde6c640c6874d6\"\r\n       }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://data.mongodb-api.com/app/data-nulxs/endpoint/data/v1/action/findOne",
+							"protocol": "https",
+							"host": [
+								"data",
+								"mongodb-api",
+								"com"
+							],
+							"path": [
+								"app",
+								"data-nulxs",
+								"endpoint",
+								"data",
+								"v1",
+								"action",
+								"findOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bookmark",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"collection\": \"bookmarks\",\r\n    \"database\": \"bookmark_manager\",\r\n    \"dataSource\": \"Cluster0\",\r\n    \"document\": {\r\n        \"name\": \"Instagram\",\r\n        \"category\": \"Social Media\",\r\n        \"url\": \"https://www.instagram.com/\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://data.mongodb-api.com/app/data-nulxs/endpoint/data/v1/action/insertOne",
+							"protocol": "https",
+							"host": [
+								"data",
+								"mongodb-api",
+								"com"
+							],
+							"path": [
+								"app",
+								"data-nulxs",
+								"endpoint",
+								"data",
+								"v1",
+								"action",
+								"insertOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bookmark",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"collection\": \"bookmarks\",\r\n    \"database\": \"bookmark_manager\",\r\n    \"dataSource\": \"Cluster0\",\r\n    \"filter\": {\r\n       \"_id\": {\r\n           \"$oid\": \"63e8a3d8765c25c04295443a\"\r\n       }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://data.mongodb-api.com/app/data-nulxs/endpoint/data/v1/action/deleteOne",
+							"protocol": "https",
+							"host": [
+								"data",
+								"mongodb-api",
+								"com"
+							],
+							"path": [
+								"app",
+								"data-nulxs",
+								"endpoint",
+								"data",
+								"v1",
+								"action",
+								"deleteOne"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": ""
+		}
+	]
+}
